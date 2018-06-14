@@ -1,8 +1,12 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[a4paper,12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[frenchb]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\graphicspath{{fig/}}
 
 \begin{document}
 
@@ -14,15 +18,13 @@
 
 \tableofcontents
 
-\section{Introduction}
-
-\section{Conception du logiciel}
-
-\section{Génération d'objets paramétriques}
-
-\section{Réflexions sur un diamant}
-
-\section{Conclusion}
+\include{./tex/introduction}
+\include{./tex/usage}
+\include{./tex/conception}
+\include{./tex/generation-obj}
+\include{./tex/phong}
+\include{./tex/reflexion}
+\include{./tex/conclusion}
 
 \end{document}
 
