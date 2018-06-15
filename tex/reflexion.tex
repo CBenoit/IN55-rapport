@@ -17,10 +17,13 @@ Nous avons donc creusé dans une autre direction, en générerant, pour chaque t
 un rendu de son monde «~miroir~», dans un buffer commun à toute la scène.
 
 Le but final est d'obtenir quelque chose ressemblant à ça~:
+
 \includegraphics[width=0.45\textwidth]{Reflexion/6}
+
 avec, en rouge, la zone où le rendu de la réflexion sera effectué.
 
-Nous avons dans cet exemple un carré avec un miroir triangulaire tourné à 45° par rapport au mur.
+Nous avons dans cet exemple un carré avec un miroir triangulaire tourné à 45°
+par rapport au mur.
 
 \includegraphics[width=0.45\textwidth]{Reflexion/1}
 
@@ -72,4 +75,12 @@ en prenant en compte l'angle d'incidence, via l'utilisation du Fresnel.
 
 Cette méthode est très coûteuse en termes de performance,
 mais notre but étant le réalisme, elle pourrait s'avérer satisfaisante.
+
+\subsection{Résultat actuel}
+
+Nous n'avons pas eu le temps d'implémenter la réfraction et la récursivité, mais
+la réflexion est bien fonctionnelle dans le logiciel. La figure suivante
+montre le résultat.
+
+{\centering \includegraphics[width=0.9\textwidth]{screenshot_software_4}}
 
