@@ -1,7 +1,7 @@
 
 \section{Conception du logiciel}
 
-Le logiciel se décompose en trois blocs principaux :
+Le logiciel se décompose en trois blocs principaux~:
 \begin{itemize}
     \item L'objet paramètrique
     \item Les lumières
@@ -24,25 +24,30 @@ les vérifications d'erreur et la libération des ressources)
 
 \subsection{Objet Paramétrique}
 
-L'objet paramétrique est construit à partir d'un entier \(n\) représentant le nombre de faces sur la partie inférieure. Il génère alors
-trois \textit{map} de textures: une pour la diffusion luminique, une pour l'émission luminique, et une dernière pour la lumière spéculaire.
+L'objet paramétrique est construit à partir d'un entier \(n\) représentant le
+nombre de faces sur la partie inférieure d'un diamant. À l'instanciation, il génère un
+tableau de vertices et un d'indices représentant le-dit diamant.
 
 \subsection{Lumières}
 
-Les lumières sont découpées en types :
+Les lumières sont découpées en types~:
 \begin{itemize}
     \item \textit{point\_light} qui diffuse une lumière autours d'un point
-    \item \textit{directional\_light} qui génère une lumière directionelle unie (façon soleil)
+    \item \textit{directional\_light} qui génère une lumière directionelle
+        unie (façon soleil)
     \item \textit{spotlight} qui émet une lumière en cône à partir d'un point
 \end{itemize}
-La classe \textit{light\_set} est une simple classe utilitaire utilisée pour gérer tout les éclairages à la fois
+La classe \textit{light\_set} est une simple classe utilitaire utilisée pour
+gérer tous les éclairages à la fois
 
 \subsection{Fenêtre}
-La classe \textit{window} est une classe qui nous permet d'initialiser les différentes bibliothèques gérant l'affichage :
+La classe \textit{window} est une classe qui nous permet d'initialiser les
+différentes bibliothèques gérant l'affichage~:
 \begin{itemize}
     \item \textit{imgui}, qui gère les bouttons, les barres de défilement, …
     \item \textit{glad}, qui s'occupe de charger OpenGL
-    \item \textit{glfw}, qui permet d'ouvrir la fenêtre et de récupérer les entrées clavier/souris
+    \item \textit{glfw}, qui permet d'ouvrir la fenêtre et de récupérer les
+        entrées clavier/souris
 \end{itemize}
 
 
