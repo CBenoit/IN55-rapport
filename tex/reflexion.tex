@@ -1,39 +1,39 @@
 \section{Réflexions et réfractions sur le diamant}
 
-Ici, le but était de trouver différentes méthodes de calculs de réflexion afin
-d'être le plus proche de la réalité possible.
+\subsection{Réflexions}
 
-Une première approche simpliste mais
-rapide à mettre en œuvre était l'utilisation d'une texture cubique. Cette méthode
-est très rapide et permet un rendu de qualité raisonnable pour des objets simples.
-Or, les diamants comportant des réflexions internes, cette méthode n'était pas très
-convaincante. Un rendu cubique autour de chaque face pouvant apporter des artefacts
+L'objectif de cette partie était de trouver  différentes méthodes
+de calcul de réflexion, afin d'avoir le meilleur réalisme visuel possible. \\
+
+Dans une première approche, certes simpliste, mais rapide à mettre en œuvre,
+nous avons utilisé une simple texture cubique. Cette méthode est extrêmement peu
+coûteuse en performance, mais permet tout de même un rendu de qualité raisonnable
+pour des objets simples. \\
+Malheureusement, les diamants comportant des réflexions internes, cette méthode ne permet pas
+de rendu convaincant, un rendu cubique autour de chaque face pouvant apporter des artefacts
 visuels sur des faces adjacentes et proches.
 
-Nous avons donc creusé dans une autre direction. Le but est de générer,
-pour chaque triangle de la scène,
-un rendu de son monde «~miroir~» dans un buffer commun à toute la scène.
+Nous avons donc creusé dans une autre direction, en générerant, pour chaque triangle de la scène,
+un rendu de son monde «~miroir~», dans un buffer commun à toute la scène.
 
-Voici le but recherché~:
-
+Le but final est d'obtenir quelque chose ressemblant à ça~:
 \includegraphics[width=0.45\textwidth]{Reflexion/6}
+avec, en rouge, la zone où le rendu de la réflexion sera effectué.
 
-avec en rouge la zone où le rendu de la réflexion sera effectué.
-
-Nous avons dans cet exemple, un carré, et un miroir triangulaire tourné à 45°.
+Nous avons dans cet exemple un carré avec un miroir triangulaire tourné à 45° par rapport au mur.
 
 \includegraphics[width=0.45\textwidth]{Reflexion/1}
 
-Pour chaque triangle se comportant comme un miroir~:
+Pour chaque triangle se comportant comme un miroir on calcul la réflexion de la manière suivante~:
 
 \begin{itemize}
-    \item On récupère sa matrice Tangente - Bitangente - Normale (TBN) afin
-        d'effectuer la réflexion de la scène par rapport a ce triangle.
+    \item On récupère sa matrice Tangente – Bitangente – Normale (TBN), qui nous permet
+        d'effectuer la réflexion de la scène par rapport au triangle.
 
         \includegraphics[width=0.45\textwidth]{Reflexion/3}
 
-    \item On supprime ce qui se trouve derrière le carré de mur, étant donné qu'une
-        fois la réflexion effectuée, c'est uniquement ce qui se trouve devant qui
+    \item On supprime ce qui se trouve de l'autre côté du mur ; en effet, une
+        fois la réflexion effectuée, c'est uniquement la partie à l'avant qui
         représente le reflet.
 
         \includegraphics[width=0.45\textwidth]{Reflexion/4}
@@ -44,10 +44,10 @@ Pour chaque triangle se comportant comme un miroir~:
         \includegraphics[width=0.45\textwidth]{Reflexion/6}
 \end{itemize}
 
-Il reste les réfractions.
+\subsection{Réfractions}
 
-Ici, il y a une étape en plus, car la lumière est dispersée, mais aussi décomposée
-suivant l'angle d'incidence et le matériau.
+Pour calculer les réfractions, il y a une étape supplémentaires, car la lumière est dispersée, mais aussi décomposée,
+en fonction de l'angle d'incidence et du matériau.
 
 On a choisi ici de traiter l'image comme le ferait une vraie caméra~:
 en trois canaux de couleur.
