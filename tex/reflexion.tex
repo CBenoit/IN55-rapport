@@ -27,7 +27,7 @@ Nous avons dans cet exemple un carré avec un miroir triangulaire tourné à 45�
 Pour chaque triangle se comportant comme un miroir on calcul la réflexion de la manière suivante~:
 
 \begin{itemize}
-    \item On récupère sa matrice Tangente – Bitangente – Normale (TBN), qui nous permet
+    \item On récupère sa matrice Tangente – Bitangente – Normale (\textit{TBN}), qui nous permet
         d'effectuer la réflexion de la scène par rapport au triangle.
 
         \includegraphics[width=0.45\textwidth]{Reflexion/3}
@@ -46,30 +46,30 @@ Pour chaque triangle se comportant comme un miroir on calcul la réflexion de la
 
 \subsection{Réfractions}
 
-Pour calculer les réfractions, il y a une étape supplémentaires, car la lumière est dispersée, mais aussi décomposée,
-en fonction de l'angle d'incidence et du matériau.
+Pour calculer les réfractions, il y a une étape supplémentaires car la lumière est dispersée,
+mais est également décomposée, en fonction de l'angle d'incidence et du matériau.
 
-On a choisi ici de traiter l'image comme le ferait une vraie caméra~:
-en trois canaux de couleur.
-On effectue chaque rendu trois fois, ou on rendra de manière séparée, le bleu,
-le vert, et le rouge. Chaque réfraction dépendra donc de la matrice TBN de la
-surface, de son indice de réfraction, qui est le rapport entre l'angle d'incidence
-et l'angle réfracté, et aussi de la longueur d'onde de la couleur
-en train d'être rendue.
+On a choisi ici de traiter l'image comme le ferait une vraie caméra, c'est à dire
+avec trois canaux de couleur.
+On peut alors soit effectuer chaque rendu trois fois, soit rendre de manière séparée le bleu,
+le vert, et le rouge. Chaque réfraction dépendra donc de la matrice \textit{TBN} de la
+surface, et de son indice de réfraction (le rapport entre l'angle d'incidence et l'angle réfracté),
+mais également de la longueur d'onde de la lumière en train d'être rendue.
 
 \includegraphics[width=0.65\textwidth]{Refraction/refraction}
 
-Les étapes suivantes sont les mêmes que pour la réflexion.
+Les étapes suivantes pour cette partie sont les mêmes que pour la réflexion.
 
-Ceci étant l'étape triviale de notre algorithme, car il faut maintenant faire la
-récurrence afin de voir les réflexions/réfractions sur plusieurs faces (la profondeur
-de réflexion étant paramétrable).
+Il suit ensuite des étapes plus complexes, qui n'ont malheureusement pas été implémentées.
+En effet, il reste les étapes de récurrences, qui permetteraient de voir les
+réflexions/réfractions se propager sur plusieurs faces,
+la profondeur de réflexion étant paramétrable.
 
-Ce n'est pas une étape à prendre à la légère, il faut effectuer un rendu des
-réflexions/réfractions pour chaque niveau de récursivité, et ainsi combiner les
-textures lors d'un double reflet (Ex: un miroir étant reflété par un autre) en
-prenant l'angle d'incidence en compte via l'utilisation du Fresnel.
+Ces rendus supplémentaires ne sont pas triviaux, car un rendu de réflexion et de réfraction
+supplémentaire est nécessaire pour chaque niveau de récursiviter, combinant les textures lors
+d'un reflet double (comme par exemple un mirroir qui se reflète dans un autre mirroir), le tout
+en prenant en compte l'angle d'incidence, via l'utilisation du Fresnel.
 
 Cette méthode est très coûteuse en termes de performance,
-mais notre but étant le réalisme, cela est satisfaisant.
+mais notre but étant le réalisme, elle pourrait s'avérer satisfaisante.
 
